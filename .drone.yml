@@ -2,9 +2,13 @@ kind: pipeline
 name: default
 
 steps:
-- name: docker build
+- name: build
   image: plugins/docker
   settings:
-    tags: "5"
+    tags: "${DRONE_COMMIT_SHA}"
     repo: sathyabhat/subreddit_fetcher
-
+  when:
+      branch:
+      - dev
+      event:
+      - push
