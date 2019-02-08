@@ -1,0 +1,10 @@
+kind: pipeline
+name: default
+
+steps:
+- name: docker build
+  image: plugins/docker
+  settings:
+    tags: "5"
+    repo: sathyabhat/subreddit_fetcher
+
