@@ -6,7 +6,7 @@ steps:
   image: plugins/docker
   settings:
     tags: "${DRONE_COMMIT_SHA}"
-    repo: sathyabhat/subreddit_fetcher
+    repo: docker.io/sathyabhat/subreddit_fetcher
     username:
         from_secrets: docker_username
     password:
