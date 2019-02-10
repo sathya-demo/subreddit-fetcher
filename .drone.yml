@@ -7,6 +7,10 @@ steps:
   settings:
     tags: "${DRONE_COMMIT_SHA}"
     repo: sathyabhat/subreddit_fetcher
+    username:
+        from_secrets: docker_username
+    password:
+        from_secrets: docker_password
   when:
       branch:
       - dev
