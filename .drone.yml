@@ -8,9 +8,9 @@ steps:
     tags: "${DRONE_COMMIT_SHA}"
     repo: docker.io/sathyabhat/subreddit_fetcher
     username:
-        from_secrets: docker_username
+      from_secrets: docker_username
     password:
-        from_secrets: docker_password
+      from_secrets: docker_password
     debug: true
   when:
       branch:
