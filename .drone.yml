@@ -12,3 +12,13 @@ steps:
     password:
       from_secret: repo_password 
     debug: true
+
+- name: scan
+  image: anchore/engine-cli
+  environment:
+    ANCHORE_CLI_USER: admin
+    ANCHORE_CLI_PASS: 
+      from_password: anchore_password
+    ANCHORE_CLI_URL: http://anchore_anchore-engine_1:8228/v1/
+  commands:
+   - anchore-cli image add sathyabhat/subreddit_fetcher:${DRONE_COMMIT_SHA}
