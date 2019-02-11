@@ -1,30 +1,14 @@
 kind: pipeline
-name: docker build 
+name: default
 
 steps:
 - name: build
   image: plugins/docker
   settings:
     tags: "${DRONE_COMMIT_SHA}"
-    repo: docker.io/sathyabhat/subreddit_fetcher
-    username:
-      from_secrets: docker_username
-    password:
-      from_secrets: docker_password
+    repo: sathyabhat/subreddit_fetcher
+    username: 
+      from_secret: docker_username
+    password: 
+      from_secret: docker_password
     debug: true
-  when:
-      branch:
-      - dev
-      event:
-      - push
-- name: Anchore Scan
-  image: anchore/engine-cli
-  environment:
-    ANCHORE_CLI_USER: admin
-    ANCHORE_CLI_PASS: foobar
-    ANCHORE_CLI_URL: http://localhost:8228/v1/
-  commands:
-  - anchore-cli image add sathyabhat/subreddit_fetcher:"${DRONE_COMMIT_SHA}"
-  when:
-      branch:
-      - dev
