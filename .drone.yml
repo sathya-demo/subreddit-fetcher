@@ -14,6 +14,7 @@ steps:
 
 - name: Analyze
   image: anchore/engine-cli
+  network_mode: host
   environment:
     ANCHORE_CLI_USER: admin
     ANCHORE_CLI_PASS:
@@ -25,6 +26,7 @@ steps:
 
 - name: Policy Check and Evaluation
   image: anchore/engine-cli
+  network_mode: host
   environment:
     ANCHORE_CLI_USER: admin
     ANCHORE_CLI_PASS:
