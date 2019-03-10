@@ -4,6 +4,7 @@ name: default
 steps:
 - name: Build
   image: plugins/docker
+  network_mode: host
   settings:
     tags: ${DRONE_COMMIT_SHA}
     repo: sathyabhat/subreddit_fetcher
@@ -33,4 +34,4 @@ steps:
       from_secret: anchore_password
     ANCHORE_CLI_URL: http://drone.sathyabh.at:8228/v1/
   commands:
-   - anchore-cli evaluate check sathyabhat/subreddit_fetcher:${DRONE_COMMIT_SHA}
+   - anchore-cli evaluate check sathyabhat/subreddit_fetcher:${DRONE_COMMIT_SHA} --detail
