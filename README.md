@@ -1,1 +1,1 @@
-Bot which posts top submissions from a subreddit
+Bot which posts top submissions from a subreddit.
