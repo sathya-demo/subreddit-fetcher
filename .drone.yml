@@ -6,8 +6,7 @@ steps:
   image: plugins/docker
   settings:
     tags: ${DRONE_COMMIT_SHA}
-    #repo: ${DRONE_REPO_NAMESPACE}/${DRONE_REPO_NAME}
-    #repo: sathyabhat/subreddit_fetcher
+    repo: sathyabhat/subreddit_fetcher
     username:
       from_secret: repo_username
     password:
@@ -21,8 +20,8 @@ steps:
       from_secret: anchore_password
     ANCHORE_CLI_URL: http://drone.sathyabh.at:8228/v1/
   commands:
-   - anchore-cli image add ${DRONE_REPO_NAMESPACE}/${DRONE_REPO_NAME}:${DRONE_COMMIT_SHA}
-   - anchore-cli image wait ${DRONE_REPO_NAMESPACE}/${DRONE_REPO_NAME}:${DRONE_COMMIT_SHA}
+   - anchore-cli image add sathyabhat/subreddit_fetcher:${DRONE_COMMIT_SHA}
+   - anchore-cli image wait sathyabhat/subreddit_fetcher:${DRONE_COMMIT_SHA}
 
 - name: Policy Check and Evaluation
   image: anchore/engine-cli
@@ -32,4 +31,4 @@ steps:
       from_secret: anchore_password
     ANCHORE_CLI_URL: http://drone.sathyabh.at:8228/v1/
   commands:
-   - anchore-cli evaluate check ${DRONE_REPO_NAMESPACE}/${DRONE_REPO_NAME}:${DRONE_COMMIT_SHA}
+   - anchore-cli evaluate check sathyabhat/subreddit_fetcher:${DRONE_COMMIT_SHA}
